@@ -1,11 +1,11 @@
 plugins {
     id 'java-library'
-    id 'io.qameta.allure' version '2.12.0'
+    id 'io.qameta.allure' version '2.11.2'
 }
 
 def selenideVersion = "7.8.1",
     junitVersion = "5.10.0",
-    allureVersion = "2.19.0"
+    allureVersion = "2.21.0"
 
 allure {
     report {
@@ -29,7 +29,8 @@ dependencies {
     testImplementation (
             "com.codeborne:selenide:$selenideVersion",
             "org.junit.jupiter:junit-jupiter:$junitVersion",
-            "org.slf4j:slf4j-simple:2.0.7")
+            "org.slf4j:slf4j-simple:2.0.7",
+            "io.qameta.allure:allure-selenide:$allureVersion")
 
 }
 tasks.withType(JavaCompile) {
