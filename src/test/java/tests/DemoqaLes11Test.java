@@ -1,6 +1,8 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -24,6 +26,7 @@ public class DemoqaLes11Test extends TestBase {
     @Tag("web")
     @DisplayName("Заполнение регистрационной формы")
     void fillFormTest() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         step("Открываем страницу", ()->{
             open("/automation-practice-form");
         });
