@@ -1,5 +1,7 @@
 package tests;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.CompletionFormsPage;
 import pages.components.ResultTableComponent;
@@ -9,6 +11,8 @@ public class Les11JenkinsTests extends TestBase {
     ResultTableComponent resultTableComponent = new ResultTableComponent();
 
     @Test
+    @Tag("web")
+    @DisplayName("Заполнение регистрационной формы")
     void fillFormTest() {
         completionForms.openPage()
                 .setFirstName("Max")
