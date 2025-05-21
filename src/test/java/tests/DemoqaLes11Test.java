@@ -29,6 +29,10 @@ public class DemoqaLes11Test extends TestBase {
         SelenideLogger.addListener("allure", new AllureSelenide());
         step("Открываем страницу", ()->{
             open("/automation-practice-form");
+
+            executeJavaScript("$('[id=\"Ad.Plus-970x250-1\"]').remove()");
+            executeJavaScript("$('[id=\"adplus-anchor\"]').remove()");
+
         });
         step("Заполняем форму", ()->{
             $("#firstName").setValue("Max");
