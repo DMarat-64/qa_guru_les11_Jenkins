@@ -15,13 +15,16 @@ import static io.qameta.allure.Allure.step;
 
 public class DemoqaLes11Test extends TestBase {
 
-    @BeforeAll
-    static void beforeall() {
-        Configuration.browserSize = "1920*1080";
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.pageLoadStrategy = "eager";
+   // @BeforeAll
+  //  static void beforeall() {
+   //     Configuration.browserSize = browserSize;
+    //    Configuration.browser = browser;
+    //    Configuration.browserVersion = browserVersion;
+   //     Configuration.baseUrl = "https://demoqa.com";
+   //     Configuration.pageLoadStrategy = "eager";
 
-    }
+
+ //   }
     @Test
     @Tag("web")
     @DisplayName("Заполнение регистрационной формы")
