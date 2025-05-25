@@ -3,10 +3,7 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -15,24 +12,18 @@ import static io.qameta.allure.Allure.step;
 
 public class DemoqaLes11Test extends TestBase {
 
-   // @BeforeAll
-  //  static void beforeall() {
-   //     Configuration.browserSize = browserSize;
-    //    Configuration.browser = browser;
-    //    Configuration.browserVersion = browserVersion;
-   //     Configuration.baseUrl = "https://demoqa.com";
-   //     Configuration.pageLoadStrategy = "eager";
+    @BeforeEach
+            public void beforeEach(){
+            SelenideLogger.addListener("allure", new AllureSelenide());
+    }
 
-
- //   }
     @Test
     @Tag("web")
     @DisplayName("Заполнение регистрационной формы")
     void fillFormTest() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+
         step("Открываем страницу", ()->{
             open("/automation-practice-form");
-
             executeJavaScript("$('[id=\"Ad.Plus-970x250-1\"]').remove()");
             executeJavaScript("$('[id=\"adplus-anchor\"]').remove()");
 

@@ -13,26 +13,20 @@ import java.util.Map;
 
 public class TestBase {
 
-    static String selenoidUserLogin = System.getProperty("selenoidUserLogin", "user1");
-    static String selenoidUserPassword = System.getProperty("selenoidUserPassword", "1234");
-    static String selenoidRemoteServerUrl = System.getProperty(
-            "selenoidRemoteServerUrl", "selenoid.autotests.cloud");
-    static String browser = System.getProperty("browser", "chrome");
-    static String browserVersion = System.getProperty("browserVersion", "128.0");
-    static String browserSize = System.getProperty("browserResolution", "1920x1080");
-
     @BeforeAll
     public static void setUp() {
-        Configuration.browserSize = browserSize;
-        Configuration.browser = browser;
-        Configuration.browserVersion = browserVersion;
+        Configuration.browserSize = System.getProperty("browserResolution", "1920x1080");
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("browserVersion", "128.0");
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
+        Configuration.remote = String.format(
+                "https://%s:%s@%s/wd/hub",
+                System.getProperty("selenoidUserLogin", "user1"),
+                System.getProperty("selenoidUserPassword", "1234"),
+                System.getProperty("selenoidUrl", "selenoid.autotests.cloud")
+        );
 
-        Configuration.remote = "https://" +
-                selenoidUserLogin + ":" + selenoidUserPassword +"@" + selenoidRemoteServerUrl + "/wd/hub";
-
-       // Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,

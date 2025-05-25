@@ -1,5 +1,8 @@
 package tests;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -9,6 +12,11 @@ import pages.components.ResultTableComponent;
 public class NegativeLoginTest extends TestBase{
     CompletionFormsPage completionForms = new CompletionFormsPage();
     ResultTableComponent resultTableComponent = new ResultTableComponent();
+
+    @BeforeEach
+    public void beforeEach(){
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
 
     @Test
     @Tag("web")
